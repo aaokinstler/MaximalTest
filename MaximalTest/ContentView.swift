@@ -12,7 +12,17 @@ struct ContentView: View {
     @State var selectedScene: Int = 0
     
     var body: some View {
-        Text("Search view")
+        TabView(selection: $selectedScene) {
+            SearchView()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }.tag(0)
+            
+            UserInfoView()
+                .tabItem{
+                    Label("User info", systemImage: "mustache")
+                }.tag(1)
+        }
     }
 }
 
