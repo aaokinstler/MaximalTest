@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedScene) {
-            SearchView()
+            SearchView(viewModel: SearchViewModel())
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }.tag(0)
