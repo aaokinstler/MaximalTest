@@ -45,6 +45,7 @@ struct SearchView: View {
             TextField("Enter user name", text: $viewModel.searchString)
                 .focused($searchIsFocused)
                 .textFieldStyle(.roundedBorder)
+                .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 .onSubmit {
                     searchIsFocused = false
                     viewModel.sendRequest()
@@ -76,7 +77,6 @@ struct UserResult: View {
             .frame(height: 50)
             .cornerRadius(8)
             .padding(.horizontal, 5)
-            .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             
             VStack(alignment: .leading) {
                 Text(user.login)

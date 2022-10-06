@@ -23,6 +23,7 @@ struct User: Decodable, Identifiable {
     let url: String
     let avatar: String
     let followers: String
+    let name: String?
     var followersCount: Int? = nil
     
     mutating func setFollowersCount(_ count: Int) {
@@ -30,8 +31,9 @@ struct User: Decodable, Identifiable {
     }
     
     enum CodingKeys: String, CodingKey  {
-        case login, id, url
+        case login, id, url, name
         case avatar = "avatar_url"
         case followers = "followers_url"
     }
 }
+

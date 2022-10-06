@@ -20,6 +20,8 @@
 		0BB3A89328EC68D600FB88D8 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB3A89228EC68D600FB88D8 /* SearchResult.swift */; };
 		0BB3A89528EC760C00FB88D8 /* ServerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB3A89428EC760C00FB88D8 /* ServerDataManager.swift */; };
 		0BB3A89828EC779600FB88D8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0BB3A89728EC779600FB88D8 /* Alamofire */; };
+		0BF5E63628EEF66800A76F01 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5E63528EEF66800A76F01 /* UserInfoViewModel.swift */; };
+		0BF5E63828EF0F4A00A76F01 /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5E63728EF0F4A00A76F01 /* AuthModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,9 @@
 		0BB3A88E28EC653700FB88D8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		0BB3A89228EC68D600FB88D8 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		0BB3A89428EC760C00FB88D8 /* ServerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDataManager.swift; sourceTree = "<group>"; };
+		0BF5E63328EEF5B800A76F01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0BF5E63528EEF66800A76F01 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
+		0BF5E63728EF0F4A00A76F01 /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +74,8 @@
 		0BB3A87A28EC433700FB88D8 /* MaximalTest */ = {
 			isa = PBXGroup;
 			children = (
+				0BF5E63328EEF5B800A76F01 /* Info.plist */,
+				0BF5E63428EEF60000A76F01 /* ViewModels */,
 				0BB3A89128EC68BA00FB88D8 /* Models */,
 				0BB3A88928EC4D2B00FB88D8 /* Views */,
 				0BB3A87D28EC433700FB88D8 /* ContentView.swift */,
@@ -93,9 +100,7 @@
 			children = (
 				0BB3A88A28EC4D4200FB88D8 /* SearchView.swift */,
 				0BB3A88C28EC4D5400FB88D8 /* UserInfoView.swift */,
-				0BB3A88E28EC653700FB88D8 /* SearchViewModel.swift */,
 				0B61190E28EDB3BC00533556 /* UserReposView.swift */,
-				0B61191028EDBCC900533556 /* UserReposViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,8 +110,19 @@
 			children = (
 				0BB3A89228EC68D600FB88D8 /* SearchResult.swift */,
 				0B61191228EDBD1600533556 /* Repository.swift */,
+				0BF5E63728EF0F4A00A76F01 /* AuthModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0BF5E63428EEF60000A76F01 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0B61191028EDBCC900533556 /* UserReposViewModel.swift */,
+				0BB3A88E28EC653700FB88D8 /* SearchViewModel.swift */,
+				0BF5E63528EEF66800A76F01 /* UserInfoViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,10 +202,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BB3A88F28EC653700FB88D8 /* SearchViewModel.swift in Sources */,
+				0BF5E63828EF0F4A00A76F01 /* AuthModels.swift in Sources */,
 				0B61190F28EDB3BC00533556 /* UserReposView.swift in Sources */,
 				0BB3A87E28EC433700FB88D8 /* ContentView.swift in Sources */,
 				0BB3A88B28EC4D4200FB88D8 /* SearchView.swift in Sources */,
 				0BB3A87C28EC433700FB88D8 /* MaximalTestApp.swift in Sources */,
+				0BF5E63628EEF66800A76F01 /* UserInfoViewModel.swift in Sources */,
 				0BB3A89328EC68D600FB88D8 /* SearchResult.swift in Sources */,
 				0BB3A88D28EC4D5400FB88D8 /* UserInfoView.swift in Sources */,
 				0B61191328EDBD1600533556 /* Repository.swift in Sources */,
@@ -326,6 +344,7 @@
 				DEVELOPMENT_TEAM = RW77H92WYF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MaximalTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -359,6 +378,7 @@
 				DEVELOPMENT_TEAM = RW77H92WYF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MaximalTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

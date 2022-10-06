@@ -17,9 +17,9 @@ class UserReposViewModel: ObservableObject {
     public func fetchReposInformation(_ login: String) {
         fetching = true
         
-        let components = ServerDataManager.components(path: "/users/\(login)/repos")
+        let components = ServerDataManager.apiComponents(path: "/users/\(login)/repos")
         
-        ServerDataManager.fetchReposInformation(components)
+        ServerDataManager.shared.fetchReposInformation(components)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] value in
                 guard let self = self else { return }

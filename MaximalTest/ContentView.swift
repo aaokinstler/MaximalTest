@@ -18,7 +18,7 @@ struct ContentView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }.tag(0)
             
-            UserInfoView()
+            UserInfoView(viewModel: UserInfoViewModel())
                 .tabItem{
                     Label("User info", systemImage: "mustache")
                 }.tag(1)
