@@ -34,12 +34,15 @@ struct ServerDataManager {
             .eraseToAnyPublisher()
     }
     
-    public static func components(path: String, paremeters: [URLQueryItem]) -> URLComponents {
+    public static func components(path: String, parameters: [URLQueryItem]? = nil) -> URLComponents {
         var components = URLComponents()
         components.scheme = ServerAPI.scheme
         components.host = ServerAPI.host
         components.path = path
-        components.queryItems = paremeters
+        if let parameters = parameters {
+            components.queryItems = parameters
+        }
+        
         return components
     }
     
@@ -49,6 +52,16 @@ struct ServerDataManager {
     
     public static func fetchFollowersCount(_ components: URLComponents) -> AnyPublisher<[User], AFError> {
         return fetchServerData(components)
+    }
+    
+    public static func fetchReposInformation(_ components: URLComponents) -> AnyPublisher<[Repository], AFError> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        return Session.default.request(components)
+            .publishDecodable(type: [Repository].self, decoder: decoder)
+            .value()
+            .eraseToAnyPublisher()
     }
 }
 

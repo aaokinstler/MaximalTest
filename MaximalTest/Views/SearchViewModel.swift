@@ -16,7 +16,7 @@ class SearchViewModel: ObservableObject {
     private var disposables = Set<AnyCancellable>()
     
     public func sendRequest() {
-        let components = ServerDataManager.components(path: "/search/users", paremeters: [URLQueryItem(name: "q", value: searchString)])
+        let components = ServerDataManager.components(path: "/search/users", parameters: [URLQueryItem(name: "q", value: searchString)])
         fetching = true
         ServerDataManager.fetchSearchData(components)
             .receive(on: DispatchQueue.main)
@@ -41,8 +41,7 @@ class SearchViewModel: ObservableObject {
         let user = self.searchResult[index]
         if let _ = user.followersCount { return }
         
-        let components = ServerDataManager.components(path: "/users/\(user.login)/followers", paremeters: [])
-        print(components)
+        let components = ServerDataManager.components(path: "/users/\(user.login)/followers")
         ServerDataManager.fetchFollowersCount(components)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] value in

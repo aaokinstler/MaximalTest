@@ -10,38 +10,54 @@ import SwiftUI
 struct SearchView: View {
     
     @ObservedObject var viewModel: SearchViewModel
+    @FocusState private var searchIsFocused: Bool
     
     var body: some View {
-        VStack {
-            ScrollView {
-                if viewModel.fetching  {
-                    Spacer()
-                    ProgressView()
-                    Spacer()
-                }  else {
-                    LazyVStack {
-                        ForEach(viewModel.searchResult) { user in
-                            UserResult(user: user)
-                                .onAppear {
-                                    viewModel.getFollowersCount(user.id)
-                                }
-                        }
+        NavigationView {
+            VStack {
+                ScrollView {
+                    if viewModel.fetching  {
+                        ProgressView()
+                    }  else {
+                        usersList
                     }
                 }
+                searchBar
             }
-            
-            HStack {
-                TextField("Enter user name", text: $viewModel.searchString)
-                    .textFieldStyle(.roundedBorder)
-                Button {
-                    viewModel.sendRequest()
-                } label: {
-                    Text("Search")
-                }
-                .buttonStyle(.bordered)
-                .disabled(viewModel.fetching)
-            }.padding()
         }
+    }
+    
+    var usersList: some View {
+        LazyVStack {
+            ForEach(viewModel.searchResult) { user in
+                NavigationLink(destination: UserReposView(user: user)) {
+                    UserResult(user: user)
+                        .onAppear {
+                            viewModel.getFollowersCount(user.id)
+                        }
+                }.buttonStyle(.plain)
+            }
+        }
+    }
+    
+    var searchBar: some View {
+        HStack {
+            TextField("Enter user name", text: $viewModel.searchString)
+                .focused($searchIsFocused)
+                .textFieldStyle(.roundedBorder)
+                .onSubmit {
+                    searchIsFocused = false
+                    viewModel.sendRequest()
+                }
+            Button {
+                searchIsFocused = false
+                viewModel.sendRequest()
+            } label: {
+                Text("Search")
+            }
+            .buttonStyle(.bordered)
+            .disabled(viewModel.fetching)
+        }.padding()
     }
 }
 
@@ -60,6 +76,7 @@ struct UserResult: View {
             .frame(height: 50)
             .cornerRadius(8)
             .padding(.horizontal, 5)
+            .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             
             VStack(alignment: .leading) {
                 Text(user.login)
